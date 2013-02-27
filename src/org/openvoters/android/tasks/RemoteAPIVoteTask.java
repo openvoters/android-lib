@@ -46,8 +46,6 @@ public class RemoteAPIVoteTask extends AsyncTask<Object, Void, Boolean> {
 		Item party = (Item) params[1];
 		uniqueVoterID = (String) params[2];
 
-		Log.d("Remote API", "Called");
-
 		try {
 			String remoteAPIURL = String.format("%s/%s",
 					RemoteAPI.getBaseURL(), "vote");
@@ -83,7 +81,7 @@ public class RemoteAPIVoteTask extends AsyncTask<Object, Void, Boolean> {
 		holder.put("candidate", item.getID());
 		holder.put("ID", uniqueID);
 
-		int TIMEOUT_MILLISEC = 10000; // = 10 seconds
+		int TIMEOUT_MILLISEC = 10000;
 		HttpParams httpParams = new BasicHttpParams();
 		HttpConnectionParams.setConnectionTimeout(httpParams, TIMEOUT_MILLISEC);
 		HttpConnectionParams.setSoTimeout(httpParams, TIMEOUT_MILLISEC);

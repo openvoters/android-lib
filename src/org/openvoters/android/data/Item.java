@@ -74,7 +74,7 @@ public class Item {
 		name = piece.getString("name");
 		imageUrl = piece.getString("imageUrl");
 		ID = piece.getString("ID");
-		twitterID = piece.getString("twitterID");
+		twitterID = piece.getString("twitterId");
 	}
 
 	public String toString() {

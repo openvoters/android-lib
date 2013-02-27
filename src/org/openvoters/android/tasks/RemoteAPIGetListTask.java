@@ -71,6 +71,7 @@ public class RemoteAPIGetListTask extends
 			httpClient.close();
 			result = obj;
 		} catch (Exception e) {
+			httpClient.close();
 			Log.e("RemoteAPI", "Errore: " + e.getLocalizedMessage());
 			taskError = true;
 			exc = e;
