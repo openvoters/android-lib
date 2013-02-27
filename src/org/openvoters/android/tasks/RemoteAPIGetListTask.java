@@ -33,7 +33,6 @@ import org.openvoters.android.remote.callback.RemoteAPICallback;
 import android.graphics.Bitmap;
 import android.net.http.AndroidHttpClient;
 import android.os.AsyncTask;
-import android.util.Log;
 
 public class RemoteAPIGetListTask extends
 		AsyncTask<RemoteAPICallback, Void, JSONObject> {
@@ -55,8 +54,6 @@ public class RemoteAPIGetListTask extends
 		JSONObject result = null;
 		AndroidHttpClient httpClient = AndroidHttpClient.newInstance("");
 
-		Log.d("Remote API", "Called");
-
 		try {
 			HttpGet request = new HttpGet(String.format("%s/%s",
 					RemoteAPI.getBaseURL(), "getlist"));
@@ -72,7 +69,6 @@ public class RemoteAPIGetListTask extends
 			result = obj;
 		} catch (Exception e) {
 			httpClient.close();
-			Log.e("RemoteAPI", "Errore: " + e.getLocalizedMessage());
 			taskError = true;
 			exc = e;
 			return null;
