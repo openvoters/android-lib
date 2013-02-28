@@ -28,16 +28,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.openvoters.android.data.Item;
 import org.openvoters.android.remote.RemoteAPI;
-import org.openvoters.android.remote.callback.RemoteAPICallback;
+import org.openvoters.android.remote.callback.RemoteAPIGetListCallback;
 
 import android.graphics.Bitmap;
 import android.net.http.AndroidHttpClient;
 import android.os.AsyncTask;
 
 public class RemoteAPIGetListTask extends
-		AsyncTask<RemoteAPICallback, Void, JSONObject> {
+		AsyncTask<RemoteAPIGetListCallback, Void, JSONObject> {
 
-	RemoteAPICallback callback;
+	RemoteAPIGetListCallback callback;
 	List<Bitmap> images = new ArrayList<Bitmap>();
 	List<String> names = new ArrayList<String>();
 	List<Item> items = new ArrayList<Item>();
@@ -46,7 +46,7 @@ public class RemoteAPIGetListTask extends
 	Exception exc;
 
 	@Override
-	protected JSONObject doInBackground(RemoteAPICallback... params) {
+	protected JSONObject doInBackground(RemoteAPIGetListCallback... params) {
 		if (params.length > 0) {
 			callback = params[0];
 		}
@@ -109,7 +109,7 @@ public class RemoteAPIGetListTask extends
 	protected void onPostExecute(JSONObject result) {
 		if (callback != null)
 			if (!taskError) {
-				callback.onSuccess(items, images, names);
+				callback.onSuccess(items);
 			} else {
 				callback.onError(exc);
 			}

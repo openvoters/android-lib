@@ -29,20 +29,20 @@ import org.apache.http.params.HttpParams;
 import org.json.JSONObject;
 import org.openvoters.android.data.Item;
 import org.openvoters.android.remote.RemoteAPI;
-import org.openvoters.android.remote.callback.RemoteAPICallback;
+import org.openvoters.android.remote.callback.RemoteAPIVoteCallback;
 
 import android.os.AsyncTask;
 import android.util.Log;
 
 public class RemoteAPIVoteTask extends AsyncTask<Object, Void, Boolean> {
 
-	RemoteAPICallback callback;
+	RemoteAPIVoteCallback callback;
 	Exception exc;
 	String uniqueVoterID;
 
 	@Override
 	protected Boolean doInBackground(Object... params) {
-		callback = (RemoteAPICallback) params[0];
+		callback = (RemoteAPIVoteCallback) params[0];
 		Item party = (Item) params[1];
 		uniqueVoterID = (String) params[2];
 
